@@ -1,15 +1,26 @@
 // Copying from readme for now 
 
-// * `username`
-//   * String
-//   * Unique
-//   * Required
-//   * Trimmed
+const UserSchema = new Schema (
+    {
+        username: {
+            type: String,
+            unique: true,
+            required: true,
+            trim: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique, true,
+
+        },
+        thoughts: [],
+        friends: [],
+    }
+    
+)
 
 // * `email`
-//   * String
-//   * Required
-//   * Unique
 //   * Must match a valid email address (look into Mongoose's matching validation)
 
 // * `thoughts`
