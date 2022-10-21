@@ -17,6 +17,11 @@ const UserSchema = new Schema (
         thoughts: [],
         friends: [],
     }
+    {
+        toJSON: {
+            getters: true,
+        },
+    }
     
 )
 
