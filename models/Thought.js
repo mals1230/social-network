@@ -1,18 +1,28 @@
 // **Thought**:
 
-// * `thoughtText`
-//   * String
-//   * Required
-//   * Must be between 1 and 280 characters
+const thoughtSchema = new Schema(
+    {
+        thoughtText: {
+            type: String,
+            required: true,
+            maxlength: 280,
+            minlength: 1,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: (dateCreated) => formatDate(dateCreated)
+        },
+        username: {
+            type: String,
+            required: true,
+        }
+        reactions: {
+            type: String,
+        }
+    }
+)
 
-// * `createdAt`
-//   * Date
-//   * Set default value to the current timestamp
-//   * Use a getter method to format the timestamp on query
-
-// * `username` (The user that created this thought)
-//   * String
-//   * Required
 
 // * `reactions` (These are like replies)
 //   * Array of nested documents created with the `reactionSchema`
