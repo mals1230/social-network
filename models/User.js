@@ -11,18 +11,27 @@ const userSchema = new Schema (
         email: {
             type: String,
             required: true,
-            unique, true,
-            // * `email`
+            unique: true,
+            validate: {
+                validator: () => Promise.resolve(false),
+                message: 'Email validation failed'
+              }
             //   * Must match a valid email address (look into Mongoose's matching validation)
 
         },
-        thoughts: [],
-        // * `thoughts`
-        //   * Array of `_id` values referencing the `Thought` model
-        friends: [],
-        // * `friends`
-        //   * Array of `_id` values referencing the `User` model (self-reference)
-    }
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought',
+              },
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Friend',
+              },
+        ],
+    },
     {
         toJSON: {
             getters: true,
