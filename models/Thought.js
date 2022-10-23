@@ -1,4 +1,4 @@
-// **Thought**:
+const { Schema, model } = require('mongoose');
 
 const thoughtSchema = new Schema(
     {
@@ -16,7 +16,7 @@ const thoughtSchema = new Schema(
         username: {
             type: String,
             required: true,
-        }
+        },
         reactions: {
             type: String,
         }
@@ -24,6 +24,7 @@ const thoughtSchema = new Schema(
     {
         toJSON: {
             getters: true,
+
         },
     }
 )
@@ -31,3 +32,6 @@ const thoughtSchema = new Schema(
 
 // * `reactions` (These are like replies)
 //   * Array of nested documents created with the `reactionSchema`
+const Thought = model('thought', thoughtSchema);
+
+module.exports = Thought;

@@ -1,6 +1,6 @@
-// Copying from readme for now 
+const { Schema, model } = require('mongoose');
 
-const UserSchema = new Schema (
+const userSchema = new Schema (
     {
         username: {
             type: String,
@@ -12,24 +12,39 @@ const UserSchema = new Schema (
             type: String,
             required: true,
             unique, true,
+            // * `email`
+            //   * Must match a valid email address (look into Mongoose's matching validation)
 
         },
         thoughts: [],
+        // * `thoughts`
+        //   * Array of `_id` values referencing the `Thought` model
         friends: [],
+        // * `friends`
+        //   * Array of `_id` values referencing the `User` model (self-reference)
     }
     {
         toJSON: {
             getters: true,
+            virtuals: true,
         },
+        id: false,
     }
-    
-)
+);
 
-// * `email`
-//   * Must match a valid email address (look into Mongoose's matching validation)
+// virtual retrieves the length of the user's `friends` array field on query.
+userSchema.virtual('friendCount').get(function(){
+    return this.friends.length;
+});
 
-// * `thoughts`
-//   * Array of `_id` values referencing the `Thought` model
+const User = model('user', userSchema);
 
-// * `friends`
-//   * Array of `_id` values referencing the `User` model (self-reference)
+module.exports = User;
+
+
+
+
+
+
+
+
