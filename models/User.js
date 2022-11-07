@@ -12,12 +12,8 @@ const userSchema = new Schema (
             type: String,
             required: true,
             unique: true,
-            validate: {
-                validator: () => Promise.resolve(false),
-                message: 'Email validation failed'
-              }
-            //   * Must match a valid email address (look into Mongoose's matching validation)
-
+            //   * Must match a valid email address
+            match: [/.+@.+\..+/, "Must match an email address!"]
         },
         thoughts: [
             {
