@@ -2,8 +2,11 @@
 
 As a user working at a social media start up, I want an APU for my social network that uses a NoSQL database so that my site can handle large amounts of unstructed data.
 
+[![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://lbesson.mit-license.org/)
+
 ## Table of Contents
 - [Acceptance Criteria](#acceptance-criteria)
+* [Licenses](#licenses)
 - [Technologies Used](#technologies-used)
 - [Demo](#demo)
 - [Links](#links)
@@ -16,7 +19,11 @@ As a user working at a social media start up, I want an APU for my social networ
 - WHEN I test API POST, PUT, and DELETE routes in Insomnia, THEN I am able to successfully create, update, and delete users and thoughts in my database
 - WHEN I test API POST and DELETE routes in Insomnia, THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 
+## Licenses
+This project is covered under MIT license.  Click on the license badge at the top of the README to learn more.
+
 ## Technologies Used
+
 
 ## Demo
 - Loom video walkthrough: 
