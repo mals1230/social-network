@@ -52,4 +52,22 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  createReaction(req, res) {
+    Thought.create(req.body)
+      .then((thought) => res.json(thought))
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
+  deleteReaction(req, res) {
+    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thoughts found with that ID' })
+          : User.deleteMany({ _id: { $in: thought.users } })
+      )
+      .then(() => res.json({ message: 'Thought and user deleted!' }))
+      .catch((err) => res.status(500).json(err));
+  },
 };
